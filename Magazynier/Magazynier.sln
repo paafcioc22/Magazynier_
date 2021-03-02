@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magazynier", "Magazynier.csproj", "{B75266DA-B977-4AC1-B5ED-23475573C7F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magazynier", "Magazynier.csproj", "{B75266DA-B977-4AC1-B5ED-23475573C7F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magazynier.DataAccess", "..\Magazynier.DataAccess\Magazynier.DataAccess.csproj", "{70250F1D-4868-4E12-A934-D3E0573EC9C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B75266DA-B977-4AC1-B5ED-23475573C7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B75266DA-B977-4AC1-B5ED-23475573C7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B75266DA-B977-4AC1-B5ED-23475573C7F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70250F1D-4868-4E12-A934-D3E0573EC9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70250F1D-4868-4E12-A934-D3E0573EC9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70250F1D-4868-4E12-A934-D3E0573EC9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70250F1D-4868-4E12-A934-D3E0573EC9C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
