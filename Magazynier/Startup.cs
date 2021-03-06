@@ -1,4 +1,7 @@
+using Magazynier.AplicationServices.API.Domain;
+using Magazynier.AplicationServices.API.Mappings;
 using Magazynier.DataAccess;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,11 +31,17 @@ namespace Magazynier
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAutoMapper(typeof(DocumentsProfile).Assembly);
+
+            services.AddMediatR(typeof(ResponseBase<>));
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddDbContext<WarehouseProcessesContext>(
                 opt =>
                 opt.UseSqlServer(this.Configuration.GetConnectionString("WarehouseDataBaseConnection")));
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

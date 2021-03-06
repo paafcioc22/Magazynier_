@@ -17,12 +17,13 @@ namespace Magazynier.DataAccess.Entities
 		[MaxLength(30)]
 		public string Trn_DataSkan { get; set; }
 		public int DclMagKod { get; set; }
-		[MaxLength(30)]
 
+		[MaxLength(30)]
 		public string Fmm_NrListu { get; set; }
-		[MaxLength(30)]
 
+		[MaxLength(30)]
 		public string Fmm_NrlistuPaczka { get; set; }
+
 		List<Item> Items { get; set; }
 	}
 }

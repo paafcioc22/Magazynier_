@@ -1,0 +1,15 @@
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\bin\Release\net5.0\Magazynier.AplicationServices.deps.json
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\bin\Release\net5.0\Magazynier.AplicationServices.dll
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\bin\Release\net5.0\ref\Magazynier.AplicationServices.dll
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\bin\Release\net5.0\Magazynier.AplicationServices.pdb
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\bin\Release\net5.0\Magazynier.DataAccess.dll
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\bin\Release\net5.0\Magazynier.DataAccess.pdb
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.csprojAssemblyReference.cache
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.AssemblyInfoInputs.cache
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.AssemblyInfo.cs
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.csproj.CoreCompileInputs.cache
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.csproj.CopyComplete
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.dll
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\ref\Magazynier.AplicationServices.dll
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.AplicationServices\obj\Release\net5.0\Magazynier.AplicationServices.pdb
