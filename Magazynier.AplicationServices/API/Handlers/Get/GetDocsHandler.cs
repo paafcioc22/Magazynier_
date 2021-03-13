@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain;
 using Magazynier.DataAccess;
+using Magazynier.DataAccess.CQRS.Queries;
 using Magazynier.DataAccess.Entities;
 using MediatR;
 using System;
@@ -14,18 +15,27 @@ namespace Magazynier.AplicationServices.API.Handlers
 {
     public class GetDocsHandler : IRequestHandler<GetDocsRequest, GetDocsResponse>
     {
-        private readonly IRepository<Document> docsRepository;
+       
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryExecutor;
 
-        public GetDocsHandler(IRepository<DataAccess.Entities.Document> docsRepository, IMapper mapper )
+        public GetDocsHandler(  IMapper mapper, IQueryExecutor queryExecutor )
         {
-            this.docsRepository = docsRepository;
+         
             this.mapper = mapper;
+            this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetDocsResponse> Handle(GetDocsRequest request, CancellationToken cancellationToken)
         {
-            var docs =  await this.docsRepository.GetAll(); 
+            //var docs =  await this.docsRepository.GetAll(); 
+
+            var query = new GetDocumentsQuery()
+            {
+                NrDokumentu= request.NrDokumentu
+            };
+            
+            var docs = await this.queryExecutor.Execute(query);
 
             var mappedDocs = this.mapper.Map<List<Domain.Models.Document>>(docs);
 

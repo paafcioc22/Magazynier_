@@ -9,6 +9,6 @@ namespace Magazynier.AplicationServices.API.Domain
 {
     public class GetDocsRequest :IRequest<GetDocsResponse> 
     {
-
+        public string NrDokumentu { get; set; }
     }
 }

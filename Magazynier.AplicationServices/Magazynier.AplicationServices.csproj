@@ -15,4 +15,9 @@
     <ProjectReference Include="..\Magazynier.DataAccess\Magazynier.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="API\Domain\PUT\" />
+    <Folder Include="API\Handlers\PUT\" />
+  </ItemGroup>
+
 </Project>

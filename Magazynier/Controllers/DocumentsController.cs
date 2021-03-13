@@ -1,4 +1,6 @@
 ﻿using Magazynier.AplicationServices.API.Domain;
+using Magazynier.AplicationServices.API.Domain.Add;
+using Magazynier.AplicationServices.API.Domain.Get;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.Entities;
 using MediatR;
@@ -33,6 +35,37 @@ namespace Magazynier.Controllers
             var response = await this.mediator.Send(docsRequest);
             return this.Ok(response);
         }
-        
+
+
+        [HttpGet]
+        [Route("{docId}")]
+        public async Task<IActionResult> GetDocsById([FromRoute] int docId)
+        {
+
+            var request = new GetDocByIdRequest()
+            {
+                DocId=docId
+            };
+
+
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddDoc([FromBody] AddDocRequest docRequest)
+        {
+            var response = await this.mediator.Send(docRequest);
+            return this.Ok(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutDoc([FromBody] AddDocRequest docRequest)
+        {
+            var response = await this.mediator.Send(docRequest);
+            return this.Ok(response);
+        }
+
     }
 }
