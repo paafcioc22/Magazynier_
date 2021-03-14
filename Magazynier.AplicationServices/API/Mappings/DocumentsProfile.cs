@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain.Add;
+using Magazynier.AplicationServices.API.Domain.PUT;
 using Magazynier.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,14 @@ namespace Magazynier.AplicationServices.API.Mappings
         {
             this.CreateMap<DataAccess.Entities.Document, Domain.Models.Document>()
                 .ForMember(x => x.Trn_NrDokumentu, y => y.MapFrom(z => z.Trn_NrDokumentu))
-                .ForMember(x => x.Fmm_NrListu, y => y.MapFrom(z => z.Fmm_NrListu));
+                .ForMember(x => x.Fmm_NrListu, y => y.MapFrom(z => z.Fmm_NrListu))
+                .ForMember(x => x.Trn_GidNumer, y => y.MapFrom(z => z.Trn_GidNumer));
+
+            this.CreateMap<PutDocRequest, Document>()
+                .ForMember(x => x.Trn_NrDokumentu, y => y.MapFrom(z => z.Document.Trn_NrDokumentu))
+                .ForMember(x => x.Fmm_NrListu, y => y.MapFrom(z => z.Document.Fmm_NrListu))
+                .ForMember(x => x.Trn_GidNumer, y => y.MapFrom(z => z.Document.Trn_GidNumer))
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.DocId));
 
 
             this.CreateMap<AddDocRequest, Document>()

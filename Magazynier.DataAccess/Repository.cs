@@ -50,6 +50,7 @@ namespace Magazynier.DataAccess
                 throw new ArgumentNullException("entity");
             }
 
+            context.Update(entity);
             return context.SaveChangesAsync();
         }
 

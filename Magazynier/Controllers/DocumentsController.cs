@@ -1,14 +1,17 @@
 ﻿using Magazynier.AplicationServices.API.Domain;
 using Magazynier.AplicationServices.API.Domain.Add;
 using Magazynier.AplicationServices.API.Domain.Get;
-using Magazynier.DataAccess;
-using Magazynier.DataAccess.Entities;
+using Magazynier.AplicationServices.API.Domain.PUT;
+using Magazynier.AplicationServices.API.Domain.Models;
+using Magazynier.DataAccess.Entities; 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Magazynier.AplicationServices.API.Domain.Delete;
+using Document = Magazynier.DataAccess.Entities.Document;
 
 namespace Magazynier.Controllers
 {
@@ -60,12 +63,39 @@ namespace Magazynier.Controllers
             return this.Ok(response);
         }
 
+
         [HttpPut]
-        public async Task<IActionResult> PutDoc([FromBody] AddDocRequest docRequest)
+        [Route("{docId}")]
+        public async Task<IActionResult> UpdateDocById(int docId,[FromBody] Document document)
         {
+
+            var docRequest = new PutDocRequest()
+            {
+                DocId = docId,
+                Document = document                
+            };
+
+
             var response = await this.mediator.Send(docRequest);
             return this.Ok(response);
         }
+
+
+        [HttpDelete]
+        [Route("{docId}")]
+        public async Task<IActionResult> DeleteDocById([FromRoute] int docId)
+        {
+
+            var docRequest = new DeleteDocRequest()
+            {
+                DocId = docId                
+            };
+
+
+            var response = await this.mediator.Send(docRequest);
+            return this.Ok(response);
+        }
+
 
     }
 }

@@ -10,7 +10,7 @@ namespace Magazynier.AplicationServices.API.Domain.Models
     {
         public string Trn_NrDokumentu { get; set; }
         public string Fmm_NrListu { get; set; }
-
-        public List<Item> Items { get; set; }
+        public int Trn_GidNumer { get; set; }
+        //public List<Item> Items { get; set; }
     }
 }
