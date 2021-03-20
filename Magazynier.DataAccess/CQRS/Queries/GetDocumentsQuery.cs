@@ -14,9 +14,13 @@ namespace Magazynier.DataAccess.CQRS.Queries
         public override Task<List<Document>> Execute(WarehouseProcessesContext context)
         {
             if (string.IsNullOrEmpty(NrDokumentu)) 
-                return context.Documents.ToListAsync();
+                return context.Documents
+                    .Include(s=>s.Items)
+                    .ToListAsync();
             else
-                return context.Documents.Where(s=>s.Trn_NrDokumentu.Contains(this.NrDokumentu)).ToListAsync();
+                return context.Documents.Where(s=>s.Trn_NrDokumentu.Contains(this.NrDokumentu))
+                    .Include(s => s.Items)
+                    .ToListAsync();
 
         }
     }

@@ -97,7 +97,7 @@ namespace Magazynier.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("RaportId")
+                    b.Property<int>("RaportId")                     
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -198,14 +198,14 @@ namespace Magazynier.DataAccess.Migrations
                     b.HasOne("Magazynier.DataAccess.Entities.Document", "Document")
                         .WithMany()
                         .HasForeignKey("DocumentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
+                        //.IsRequired();
 
                     b.HasOne("Magazynier.DataAccess.Entities.Raport", "Raport")
                         .WithMany("Items")
                         .HasForeignKey("RaportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
+                       // .IsRequired();
 
                     b.Navigation("Document");
 

@@ -9,7 +9,7 @@ namespace Magazynier.DataAccess.Entities
     public class Raport: EntityBase
 	{
 
-		public List<Item> Items { get; set; }
+		//public List<Item> Items { get; set; }
 
 		public int MsR_MagNumer { get; set; }
 		public int MsR_TrnNumer { get; set; }

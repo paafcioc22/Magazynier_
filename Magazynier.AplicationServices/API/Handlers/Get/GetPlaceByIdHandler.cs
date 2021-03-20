@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain.Get;
+using Magazynier.AplicationServices.ErrorHandling;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS.Queries;
 using MediatR;
@@ -29,6 +30,15 @@ namespace Magazynier.AplicationServices.API.Handlers.Get
             };
 
             var places = await this.queryExectuor.Execute(query);
+
+
+            if (places == null)
+            {
+                return new GetPlaceByIdResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
+                };
+            }
 
             var mappedPlaces = this.mapper.Map<Domain.Models.Place>(places);
 

@@ -4,14 +4,16 @@ using Magazynier.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Magazynier.DataAccess.Migrations
 {
     [DbContext(typeof(WarehouseProcessesContext))]
-    partial class WarehouseProcessesContextModelSnapshot : ModelSnapshot
+    [Migration("20210320205813_nullItemasallowed")]
+    partial class nullItemasallowed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,7 +83,7 @@ namespace Magazynier.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DocumentId")
+                    b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -95,9 +97,14 @@ namespace Magazynier.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("RaportId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DocumentId");
+
+                    b.HasIndex("RaportId");
 
                     b.ToTable("Items");
                 });
@@ -190,12 +197,27 @@ namespace Magazynier.DataAccess.Migrations
                 {
                     b.HasOne("Magazynier.DataAccess.Entities.Document", "Document")
                         .WithMany("Items")
-                        .HasForeignKey("DocumentId");
+                        .HasForeignKey("DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Magazynier.DataAccess.Entities.Raport", "Raport")
+                        .WithMany("Items")
+                        .HasForeignKey("RaportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Document");
+
+                    b.Navigation("Raport");
                 });
 
             modelBuilder.Entity("Magazynier.DataAccess.Entities.Document", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Magazynier.DataAccess.Entities.Raport", b =>
                 {
                     b.Navigation("Items");
                 });

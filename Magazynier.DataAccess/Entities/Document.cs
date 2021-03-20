@@ -24,6 +24,6 @@ namespace Magazynier.DataAccess.Entities
 		[MaxLength(30)]
 		public string Fmm_NrlistuPaczka { get; set; }
 
-		List<Item> Items { get; set; }
+		public List<Item> Items { get; set; }
 	}
 }
