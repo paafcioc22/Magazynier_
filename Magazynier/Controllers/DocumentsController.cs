@@ -3,7 +3,7 @@ using Magazynier.AplicationServices.API.Domain.Add;
 using Magazynier.AplicationServices.API.Domain.Get;
 using Magazynier.AplicationServices.API.Domain.PUT;
 using Magazynier.AplicationServices.API.Domain.Models;
-using Magazynier.DataAccess.Entities; 
+//using Magazynier.DataAccess.Entities; 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Magazynier.AplicationServices.API.Domain.Delete;
-using Document = Magazynier.DataAccess.Entities.Document;
+//using Document = Magazynier.DataAccess.Entities.Document;
 
 namespace Magazynier.Controllers
 {

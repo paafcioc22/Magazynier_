@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Document = Magazynier.DataAccess.Entities.Document;
+//using Document = Magazynier.DataAccess.Entities.Document;
 namespace Magazynier.AplicationServices.API.Domain.PUT
 {
     public class PutDocRequest : IRequest<PutDocResponse>

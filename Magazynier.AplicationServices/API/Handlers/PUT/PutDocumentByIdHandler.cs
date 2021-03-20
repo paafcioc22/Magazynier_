@@ -42,9 +42,9 @@ namespace Magazynier.AplicationServices.API.Handlers.PUT
                 Id = request.DocId
             };
 
-            var docs = await this.queryExecutor.Execute(query);
+            var docFromDb = await this.queryExecutor.Execute(query);
 
-            var mappedDocs = this.mapper.Map<PutDocRequest, Document>(request,docs);
+            var mappedDocs = this.mapper.Map<PutDocRequest, Document>(request, docFromDb);
 
             var command = new PutDocumentCommand() 
             { 

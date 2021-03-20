@@ -95,9 +95,14 @@ namespace Magazynier.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("RaportId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DocumentId");
+
+                    b.HasIndex("RaportId");
 
                     b.ToTable("Items");
                 });
@@ -121,11 +126,8 @@ namespace Magazynier.DataAccess.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<int>("PlaceQuantity")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("PlaceTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("PlaceTrnNumer")
                         .HasColumnType("int");
@@ -136,6 +138,42 @@ namespace Magazynier.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Places");
+                });
+
+            modelBuilder.Entity("Magazynier.DataAccess.Entities.Raport", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("MsR_Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MsR_Ilosc")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MsR_MagNumer")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MsR_NewGidNumer")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("MsR_StanDok")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("MsR_TrnNumer")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MsR_TwrNumer")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MsR_TypDok")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Raport");
                 });
 
             modelBuilder.Entity("ItemPlace", b =>
@@ -161,7 +199,20 @@ namespace Magazynier.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Magazynier.DataAccess.Entities.Raport", "Raport")
+                        .WithMany("Items")
+                        .HasForeignKey("RaportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Document");
+
+                    b.Navigation("Raport");
+                });
+
+            modelBuilder.Entity("Magazynier.DataAccess.Entities.Raport", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

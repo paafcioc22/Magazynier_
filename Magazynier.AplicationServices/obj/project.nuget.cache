@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "MHdXTs5p4ldBD2MVErTXB2SDYSEG1dgs7Z8CEog1DaL5WCmpZXzxoQ+L1SJDTIgjuYx9H2oqs2IfRPyHjz9iAQ==",
+  "dgSpecHash": "qy5Ij5cGhFnBZPoVxe9OBz8ReFsnCldTzo3A1vhEwauz8rPknLhzX9P3uAsCrDw1HYyIYCH8r6bzAxlTr+FITg==",
   "success": true,
   "projectFilePath": "C:\\Users\\pawel\\source\\repos\\Magazynier\\Magazynier\\Magazynier.AplicationServices\\Magazynier.AplicationServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pawel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\pawel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\pawel\\.nuget\\packages\\fluentvalidation\\9.5.3\\fluentvalidation.9.5.3.nupkg.sha512",
+    "C:\\Users\\pawel\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.5.3\\fluentvalidation.aspnetcore.9.5.3.nupkg.sha512",
+    "C:\\Users\\pawel\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.5.3\\fluentvalidation.dependencyinjectionextensions.9.5.3.nupkg.sha512",
     "C:\\Users\\pawel\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\pawel\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\pawel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

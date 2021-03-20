@@ -9,5 +9,6 @@ namespace Magazynier.AplicationServices.API.Domain.Models
     public class Place
     {
         public string PlaceName { get; set; }
+        public string PlaceOpis { get; set; }
     }
 }

@@ -12,6 +12,13 @@ namespace Magazynier.DataAccess.Entities
 
         public int DocumentId { get; set; }
         public Document Document { get; set; }
+
+
+        public int RaportId { get; set; }
+        public Raport Raport { get; set; }
+
+
+
         public List<Place> Places { get; set; }
 
         [MaxLength(50)]

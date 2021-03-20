@@ -1,9 +1,4 @@
-﻿using Magazynier.DataAccess;
-using Magazynier.DataAccess.CQRS.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Magazynier.DataAccess.CQRS.Queries;
 using System.Threading.Tasks;
 
 namespace Magazynier.DataAccess

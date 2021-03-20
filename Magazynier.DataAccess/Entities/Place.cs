@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,13 @@ namespace Magazynier.DataAccess.Entities
 
         [MaxLength(5)]
         public string PlaceOpis { get; set; }
+
         public int PlaceTwrNumer { get; set; }
         public int PlaceTrnNumer { get; set; }
         public int PlaceMagZrd { get; set; }
-        public int PlaceQuantity { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime PlaceTime { get; set; }
+   
 
     }
 }

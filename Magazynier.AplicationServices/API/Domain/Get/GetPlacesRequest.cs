@@ -9,6 +9,6 @@ namespace Magazynier.AplicationServices.API.Domain
 {
     public class GetPlacesRequest : IRequest<GetPlacesResponse>
     {
-
+        public string PlaceName{ get; set; }
     }
 }

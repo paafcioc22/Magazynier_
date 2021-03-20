@@ -1,5 +1,7 @@
+using FluentValidation.AspNetCore;
 using Magazynier.AplicationServices.API.Domain;
 using Magazynier.AplicationServices.API.Mappings;
+using Magazynier.AplicationServices.API.Validators;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS;
 using MediatR;
@@ -32,6 +34,15 @@ namespace Magazynier
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore()
+                .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<AddPlaceRequestValidator>());
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+
             services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
 
