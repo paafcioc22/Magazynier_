@@ -1,6 +1,9 @@
 using FluentValidation.AspNetCore;
 using Magazynier.AplicationServices.API.Domain;
+using Magazynier.AplicationServices.API.GUSApi;
+using Magazynier.AplicationServices.API.Handlers;
 using Magazynier.AplicationServices.API.Mappings;
+using Magazynier.AplicationServices.API.SzachoAPI;
 using Magazynier.AplicationServices.API.Validators;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS;
@@ -19,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPISzacho;
 
 namespace Magazynier
 {
@@ -45,6 +49,8 @@ namespace Magazynier
 
             services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
+            services.AddTransient<IWebSzacho, WebSzacho>();
+            services.AddTransient<IGus, GUS>();
 
             services.AddAutoMapper(typeof(DocumentsProfile).Assembly);
 

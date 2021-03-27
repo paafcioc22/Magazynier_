@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,8 @@ namespace Magazynier.DataAccess.Entities
 		//public List<Item> Items { get; set; }
 
 		public int MsR_MagNumer { get; set; }
+
+		//[ForeignKey("Trn_GidNumer")]
 		public int MsR_TrnNumer { get; set; }
 		public int MsR_TwrNumer { get; set; }
 		public int MsR_Ilosc { get; set; }

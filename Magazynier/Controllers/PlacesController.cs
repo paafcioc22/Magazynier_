@@ -7,6 +7,7 @@ using MediatR;
 using Magazynier.AplicationServices.API.Domain;
 using Magazynier.AplicationServices.API.Domain.Get;
 using Magazynier.AplicationServices.API.Domain.Add;
+using Microsoft.Extensions.Logging;
 
 namespace Magazynier.Controllers
 {
@@ -16,9 +17,9 @@ namespace Magazynier.Controllers
     public class PlacesController :ApiControllerBase
     {
         
-        public PlacesController(IMediator mediator) :base(mediator)
+        public PlacesController(IMediator mediator, ILogger<PlacesController> logger) :base(mediator)
         {
-            
+            logger.LogInformation("We are in Place");
         }
 
 
@@ -56,16 +57,8 @@ namespace Magazynier.Controllers
         public Task<IActionResult> AddPlace([FromBody] AddPlaceRequest placeRequest)
         {
              
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.BadRequest("BAD_REQUEST");
-            //}
+             return this.HandleRequest<AddPlaceRequest, AddPlaceResponse>(placeRequest);
 
-            return this.HandleRequest<AddPlaceRequest, AddPlaceResponse>(placeRequest);
-
-
-            //var response = await this.mediator.Send(placeRequest);
-            //return this.Ok(response);
         }
 
     }

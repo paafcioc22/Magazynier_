@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain;
 using Magazynier.AplicationServices.API.Domain.Get;
+using Magazynier.AplicationServices.ErrorHandling;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS.Queries;
 using Magazynier.DataAccess.Entities;
@@ -33,6 +34,15 @@ namespace Magazynier.AplicationServices.API.Handlers.Get
             };
 
             var docs = await this.queryExecutor.Execute(query);
+
+            if (docs == null)
+            {
+                return new GetDocByIdResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
+                };
+            }
+
 
             var mappedDocs = this.mapper.Map<Domain.Models.Document>(docs);
 

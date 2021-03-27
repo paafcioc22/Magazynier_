@@ -10,5 +10,6 @@ namespace Magazynier.AplicationServices.API.Domain.Models
     {
         public string PlaceName { get; set; }
         public string PlaceOpis { get; set; }
+        public List<Item> Items { get; set; }
     }
 }

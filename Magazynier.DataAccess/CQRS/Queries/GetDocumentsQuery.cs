@@ -18,7 +18,8 @@ namespace Magazynier.DataAccess.CQRS.Queries
                     .Include(s=>s.Items)
                     .ToListAsync();
             else
-                return context.Documents.Where(s=>s.Trn_NrDokumentu.Contains(this.NrDokumentu))
+                return context.Documents
+                    .Where(s=>s.Trn_NrDokumentu.Contains(this.NrDokumentu))
                     .Include(s => s.Items)
                     .ToListAsync();
 

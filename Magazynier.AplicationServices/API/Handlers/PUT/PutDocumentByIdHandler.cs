@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Document = Magazynier.DataAccess.Entities.Document;
+using Magazynier.AplicationServices.ErrorHandling;
 
 namespace Magazynier.AplicationServices.API.Handlers.PUT
 {
@@ -43,6 +44,15 @@ namespace Magazynier.AplicationServices.API.Handlers.PUT
             };
 
             var docFromDb = await this.queryExecutor.Execute(query);
+
+
+            if (docFromDb == null)
+            {
+                return new PutDocResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
+                };
+            }
 
             var mappedDocs = this.mapper.Map<PutDocRequest, Document>(request, docFromDb);
 

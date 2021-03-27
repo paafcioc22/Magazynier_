@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain;
+using Magazynier.AplicationServices.API.GUSApi;
+using Magazynier.AplicationServices.API.SzachoAPI;
+using Magazynier.AplicationServices.ErrorHandling;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS.Queries;
 using Magazynier.DataAccess.Entities;
@@ -10,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WebAPISzacho;
+using WebService.Model;
 
 namespace Magazynier.AplicationServices.API.Handlers
 {
@@ -18,17 +23,38 @@ namespace Magazynier.AplicationServices.API.Handlers
        
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
+        readonly IWebSzacho webSzacho;
+        readonly IGus gus;
 
-        public GetDocsHandler(  IMapper mapper, IQueryExecutor queryExecutor )
+
+        public GetDocsHandler(  IMapper mapper, 
+            IQueryExecutor queryExecutor, 
+            IWebSzacho webSzacho,
+            IGus gus)
         {
-         
+            this.gus = gus;
+            this.webSzacho = webSzacho;
             this.mapper = mapper;
             this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetDocsResponse> Handle(GetDocsRequest request, CancellationToken cancellationToken)
         {
-            //var docs =  await this.docsRepository.GetAll(); 
+       
+            var sqlPobierzMMki = $@"cdn.PC_WykonajSelect N'	select twr_kod PlaceOpis , PlaceName, sum(cast(placequantity as int)) PlaceQuantity, PlaceTwrNumer
+                            from cdn.pc_mspolozenie a
+                            join cdn.TwrKarty on Twr_GIDNumer= placetwrnumer                         
+                            group by twr_kod , placeName,PlaceTwrNumer
+                            order by 2'";
+
+         //   var daneZgus = await gus.szukajPodmioty<RootDaneSzukajPodmioty>("6121762083");
+
+           // var dsa= await webSzacho.GetList<Place>(sqlPobierzMMki);
+
+            //var respone = await lineSrvSoap.ExecuteSQLCommandAsync(req);
+
+
+
 
             var query = new GetDocumentsQuery()
             {
@@ -36,6 +62,15 @@ namespace Magazynier.AplicationServices.API.Handlers
             };
             
             var docs = await this.queryExecutor.Execute(query);
+
+
+            if (docs == null)
+            {
+                return new GetDocsResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
+                };
+            }
 
             var mappedDocs = this.mapper.Map<List<Domain.Models.Document>>(docs);
 

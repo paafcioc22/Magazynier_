@@ -1,6 +1,8 @@
-﻿using Magazynier.AplicationServices.API.Domain.Models;
+﻿using Magazynier.AplicationServices.API.Domain.Get;
+using Magazynier.AplicationServices.API.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace Magazynier.Controllers
@@ -8,15 +10,15 @@ namespace Magazynier.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class ItemsController :ControllerBase
+    public class ItemsController : ApiControllerBase
     {
       
         private readonly IMediator mediator;
 
-        public ItemsController(IMediator mediator)
+        public ItemsController(IMediator mediator, ILogger<ItemsController> logger) : base(mediator)
         {
-         
-            this.mediator = mediator;
+
+            logger.LogInformation("We are in Items");
         }
 
         [HttpGet]
@@ -26,6 +28,21 @@ namespace Magazynier.Controllers
             return this.Ok(response);
         }
 
+
+        [HttpGet]
+        [Route("{docId}")]
+        public  Task<IActionResult> GetItemsByDocId([FromRoute] int docId)
+        {
+
+            var request = new GetItemByDocIdRequest()
+            {
+                DocId = docId
+            };
+
+          
+            return this.HandleRequest<GetItemByDocIdRequest, GetItemByDocIdResponse>(request);
+
+        }
 
 
 

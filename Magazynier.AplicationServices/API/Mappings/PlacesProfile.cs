@@ -15,6 +15,7 @@ namespace Magazynier.AplicationServices.API.Mappings
         {
             this.CreateMap<DataAccess.Entities.Place, Domain.Models.Place>()
         .ForMember(x => x.PlaceName, y => y.MapFrom(z => z.PlaceName))
+        .ForMember(x => x.Items, y => y.MapFrom(z => z.Items))
         .ForMember(x => x.PlaceOpis, y => y.MapFrom(z => z.PlaceOpis));
 
         this.CreateMap<AddPlaceRequest, Place>()

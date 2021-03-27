@@ -52,9 +52,9 @@ namespace Magazynier.DataAccess.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Trn_DataSkan")
+                    b.Property<DateTime>("Trn_DataSkan")
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("Trn_GidNumer")
                         .HasColumnType("int");
@@ -95,9 +95,14 @@ namespace Magazynier.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RaportId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DocumentId");
+
+                    b.HasIndex("RaportId");
 
                     b.ToTable("Items");
                 });
@@ -192,7 +197,13 @@ namespace Magazynier.DataAccess.Migrations
                         .WithMany("Items")
                         .HasForeignKey("DocumentId");
 
+                    b.HasOne("Magazynier.DataAccess.Entities.Raport", "Raport")
+                        .WithMany()
+                        .HasForeignKey("RaportId");
+
                     b.Navigation("Document");
+
+                    b.Navigation("Raport");
                 });
 
             modelBuilder.Entity("Magazynier.DataAccess.Entities.Document", b =>

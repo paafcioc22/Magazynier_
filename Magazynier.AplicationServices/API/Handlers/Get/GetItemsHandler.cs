@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain.Models;
+using Magazynier.AplicationServices.ErrorHandling;
 using Magazynier.DataAccess;
 using MediatR;
 using System;
@@ -26,9 +27,20 @@ namespace Magazynier.AplicationServices.API.Handlers
         {
             var items = await this.itemRepository.GetAll();
 
-            var mappedItems= this.mapper.Map<List<Domain.Models.Item>>(items);
 
-            
+
+            if (items == null)
+            {
+                return new GetItemsResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
+                };
+            }
+
+
+            var mappedItems = this.mapper.Map<List<Domain.Models.Item>>(items);            
+
+
             var response = new GetItemsResponse()
             {
                 Data = mappedItems

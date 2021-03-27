@@ -24,8 +24,7 @@ namespace Magazynier.Controllers
         {
 
             if (!this.ModelState.IsValid)
-            {
-                //return this.BadRequest("BAD_REQUEST");
+            {               
                 return this.BadRequest(
                         this.ModelState
                         .Where(x => x.Value.Errors.Any())

@@ -13,7 +13,9 @@ namespace Magazynier.DataAccess.CQRS.Queries
         public int Id { get; set; }
         public override async Task<Document> Execute(WarehouseProcessesContext context)
         {
-            var doc = await context.Documents.FirstOrDefaultAsync(x=> x.Id==this.Id);
+            var doc = await context.Documents
+                .Include(s=>s.Items)
+                .FirstOrDefaultAsync(x=> x.Id==this.Id);
             return doc;
         }
     }
