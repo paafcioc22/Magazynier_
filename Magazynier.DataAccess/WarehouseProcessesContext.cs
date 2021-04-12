@@ -19,5 +19,6 @@ namespace Magazynier.DataAccess
         public DbSet<Document> Documents { get; set; }
         public DbSet<Place> Places { get; set; }
         public DbSet<Raport> Raport { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

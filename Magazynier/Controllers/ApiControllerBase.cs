@@ -6,13 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Magazynier.Controllers
 {
     abstract public class ApiControllerBase : ControllerBase
     {
-        readonly IMediator mediator;
+        protected IMediator mediator;
         public ApiControllerBase(IMediator mediator)
         {
             this.mediator = mediator;
@@ -32,6 +33,7 @@ namespace Magazynier.Controllers
                     );                              
             }
 
+            var userName = this.User.FindFirstValue(ClaimTypes.Name);
 
             var response = await this.mediator.Send(request);
 

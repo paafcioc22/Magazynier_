@@ -12,7 +12,8 @@ namespace Magazynier.DataAccess
         public WarehouseProcessesContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<WarehouseProcessesContext>();
-            optionsBuilder.UseSqlServer(@"Data Source=WIN-M4TFKCSRRDC\OPTIMA;Initial Catalog=WarehouseProcesses;User ID=szachownica;Password=M@nieczki22");
+            //optionsBuilder.UseSqlServer(@"Data Source=WIN-M4TFKCSRRDC\OPTIMA;Initial Catalog=WarehouseProcesses;User ID=szachownica;Password=M@nieczki22");
+            optionsBuilder.UseSqlServer(@"Server=tcp:magazynier-srv.database.windows.net,1433;Initial Catalog=WarehouseProcesses;Persist Security Info=False;User ID=pawel;Password=HXUexuP42n8Hhd9;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             return new WarehouseProcessesContext(optionsBuilder.Options);
         }
     }

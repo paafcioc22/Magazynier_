@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Magazynier.AplicationServices.API.Mappings
 {
-    public class DocumentsProfile:Profile
+    public class DocumentsProfile : Profile
     {
         public DocumentsProfile()
         {

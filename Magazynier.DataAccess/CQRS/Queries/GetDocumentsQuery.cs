@@ -11,15 +11,16 @@ namespace Magazynier.DataAccess.CQRS.Queries
     public class GetDocumentsQuery : QueryBase<List<Document>>
     {
         public string NrDokumentu { get; set; }
-        public override Task<List<Document>> Execute(WarehouseProcessesContext context)
+        public async override Task<List<Document>> Execute(WarehouseProcessesContext context)
         {
-            if (string.IsNullOrEmpty(NrDokumentu)) 
-                return context.Documents
-                    .Include(s=>s.Items)
+            if (string.IsNullOrEmpty(NrDokumentu))
+                return await context.Documents
+                    .Include(s => s.Items)
+                   
                     .ToListAsync();
             else
-                return context.Documents
-                    .Where(s=>s.Trn_NrDokumentu.Contains(this.NrDokumentu))
+                return await context.Documents
+                    .Where(s => s.Trn_NrDokumentu.Contains(this.NrDokumentu))
                     .Include(s => s.Items)
                     .ToListAsync();
 

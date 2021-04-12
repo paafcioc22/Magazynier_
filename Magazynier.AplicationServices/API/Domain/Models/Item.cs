@@ -11,5 +11,6 @@ namespace Magazynier.AplicationServices.API.Domain.Models
         public string Name { get; set; }
         public string Price { get; set; }
         public int Quantity { get; set; }
+        public int QuantityScan { get; set; }
     }
 }

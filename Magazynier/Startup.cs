@@ -5,9 +5,11 @@ using Magazynier.AplicationServices.API.Handlers;
 using Magazynier.AplicationServices.API.Mappings;
 using Magazynier.AplicationServices.API.SzachoAPI;
 using Magazynier.AplicationServices.API.Validators;
+using Magazynier.Authentication;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS;
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +40,12 @@ namespace Magazynier
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+            services.AddAuthentication("BasicAuthetication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthetication", null);
+
+
             services.AddMvcCore()
                 .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<AddPlaceRequestValidator>());
 
@@ -84,6 +92,7 @@ namespace Magazynier
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

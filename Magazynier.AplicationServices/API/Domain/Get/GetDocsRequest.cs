@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Magazynier.AplicationServices.API.Domain
 {
-    public class GetDocsRequest :IRequest<GetDocsResponse> 
+    public class GetDocsRequest : RequestBase, IRequest<GetDocsResponse>
     {
         public string NrDokumentu { get; set; }
     }

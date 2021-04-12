@@ -39,8 +39,4 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="API\Modele\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,5 @@
-﻿using Magazynier.AplicationServices.API.Domain.Get;
+﻿using Magazynier.AplicationServices.API.Domain.Add;
+using Magazynier.AplicationServices.API.Domain.Get;
 using Magazynier.AplicationServices.API.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -44,7 +45,20 @@ namespace Magazynier.Controllers
 
         }
 
+        [HttpPost]
+        [Route("{docId}")]
+        public Task<IActionResult> AddItemsByDocId(int docId, [FromBody] Item item)
+        {
 
+            var request = new AddItemRequest()
+            {
+                DocId = docId,
+                Item = item
+            };
+
+            return this.HandleRequest<AddItemRequest, AddItemResponse>(request);
+
+        }
 
 
 

@@ -54,6 +54,7 @@ namespace Magazynier.AplicationServices.API.Handlers
             //var respone = await lineSrvSoap.ExecuteSQLCommandAsync(req);
 
 
+            
 
 
             var query = new GetDocumentsQuery()
