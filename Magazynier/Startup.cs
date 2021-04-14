@@ -8,11 +8,13 @@ using Magazynier.AplicationServices.API.Validators;
 using Magazynier.Authentication;
 using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS;
+using Magazynier.DataAccess.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -59,6 +61,7 @@ namespace Magazynier
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<IWebSzacho, WebSzacho>();
             services.AddTransient<IGus, GUS>();
+            services.AddTransient<Magazynier.AplicationServices.IPasswordHasher<User>, PasswordHasher<User>>();
 
             services.AddAutoMapper(typeof(DocumentsProfile).Assembly);
 

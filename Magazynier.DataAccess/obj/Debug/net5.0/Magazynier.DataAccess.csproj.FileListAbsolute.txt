@@ -1,4 +1,6 @@
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.deps.json
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.runtimeconfig.json
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.runtimeconfig.dev.json
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\ref\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.pdb
@@ -10,6 +12,4 @@ C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debu
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\ref\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.pdb
-C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.runtimeconfig.json
-C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.runtimeconfig.dev.json
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.genruntimeconfig.cache

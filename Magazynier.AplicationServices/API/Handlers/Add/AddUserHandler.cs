@@ -6,6 +6,7 @@ using Magazynier.DataAccess.CQRS.Commands;
 using Magazynier.DataAccess.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,13 @@ namespace Magazynier.AplicationServices.API.Handlers.Add
     {
         private readonly IMapper mapper;
         private readonly ICommandExecutor commandExecutor;
+        private readonly IPasswordHasher<User> passwordHasher;
 
-        public AddUserHandler(IMapper mapper, ICommandExecutor commandExecutor)
+        public AddUserHandler(IMapper mapper, ICommandExecutor commandExecutor, IPasswordHasher<User> passwordHasher)
         {
             this.mapper = mapper;
             this.commandExecutor = commandExecutor;
+            this.passwordHasher = passwordHasher;
         }
         public async Task<AddUserResponse> Handle(AddUserRequest request, CancellationToken cancellationToken)
         {
@@ -43,7 +46,7 @@ namespace Magazynier.AplicationServices.API.Handlers.Add
                 Parametr = user
             };
 
-            command.Parametr.Password = HashPass(command.Parametr.Password);
+            command.Parametr.Password = passwordHasher.HashPassword(user, command.Parametr.Password);
 
             var userFromDb = await this.commandExecutor.Execute(command);
 
@@ -63,29 +66,6 @@ namespace Magazynier.AplicationServices.API.Handlers.Add
         }
 
 
-        string HashPass(string password)
-        {
-
-
-            //string password = Console.ReadLine();
-
-            // generate a 128-bit salt using a secure PRNG
-            byte[] salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-
-
-            // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
-
-            return hashed;
-        }
+       
     }
 }

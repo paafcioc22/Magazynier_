@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -21,9 +22,11 @@ namespace Magazynier.Authentication
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
+        private readonly IPasswordHasher<User> passwordHasher;
         private readonly IQueryExecutor queryExecutor;
 
         public BasicAuthenticationHandler(
+            IPasswordHasher<User> passwordHasher,
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
@@ -31,6 +34,7 @@ namespace Magazynier.Authentication
             IQueryExecutor queryExecutor)
             : base(options, logger, encoder, clock)
         {
+            this.passwordHasher = passwordHasher;
             this.queryExecutor = queryExecutor;
         }
 
@@ -62,10 +66,12 @@ namespace Magazynier.Authentication
                 };
                 user = await this.queryExecutor.Execute(query);
 
-          
+
+
+                var isCorr = passwordHasher.VerifyHashedPassword(user, user.Password, password);
 
                 // TODO: HASH!
-                if (user == null || user.Password != HashPass(password))
+                if (user == null || isCorr == PasswordVerificationResult.Failed)
                 {
                     return AuthenticateResult.Fail("Invalid Authorization Header");
                 }
@@ -86,30 +92,33 @@ namespace Magazynier.Authentication
         }
 
 
-        string HashPass(string password)
-        {
+        //string HashPass(string password)
+        //{
 
 
-            //string password = Console.ReadLine();
+        //    //string password = Console.ReadLine();
 
-            // generate a 128-bit salt using a secure PRNG
-            byte[] salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
+        //    // generate a 128-bit salt using a secure PRNG
+        //    byte[] salt = new byte[128 / 8];
+        //    using (var rng = RandomNumberGenerator.Create())
+        //    {
+        //        rng.GetBytes(salt);
+        //    }
 
 
-            // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
+        //    // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
+        //    string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+        //        password: password,
+        //        salt: salt,
+        //        prf: KeyDerivationPrf.HMACSHA1,
+        //        iterationCount: 10000,
+        //        numBytesRequested: 256 / 8));
 
-            return hashed;
-        }
+
+             
+
+        //    return hashed;
+        //}
 
     }
 }
