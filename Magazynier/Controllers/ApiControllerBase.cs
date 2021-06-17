@@ -33,7 +33,19 @@ namespace Magazynier.Controllers
                     );                              
             }
 
-            var userName = this.User.FindFirstValue(ClaimTypes.Name);
+
+
+            if (User.Claims.FirstOrDefault() != null)
+            {
+                (request as RequestBase).AuthenticationName= this.User.FindFirstValue(ClaimTypes.Name);
+                (request as RequestBase).AuthenticationRole= this.User.FindFirstValue(ClaimTypes.Name);
+
+            }
+                //var userName = this.User.FindFirstValue(ClaimTypes.Name);
+
+            
+
+
 
             var response = await this.mediator.Send(request);
 
@@ -68,6 +80,7 @@ namespace Magazynier.Controllers
                     return HttpStatusCode.MethodNotAllowed;
                 case ErrorType.TooManyRequest:
                     return HttpStatusCode.TooManyRequests;
+                  
                 default:
                     return HttpStatusCode.BadRequest;
             }

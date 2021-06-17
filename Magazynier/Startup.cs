@@ -60,8 +60,8 @@ namespace Magazynier
             services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<IWebSzacho, WebSzacho>();
-            services.AddTransient<IGus, GUS>();
-            services.AddTransient<Magazynier.AplicationServices.IPasswordHasher<User>, PasswordHasher<User>>();
+           // services.AddTransient<IGus, GUS>();
+            services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 
             services.AddAutoMapper(typeof(DocumentsProfile).Assembly);
 

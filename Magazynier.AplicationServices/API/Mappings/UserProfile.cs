@@ -18,12 +18,15 @@ namespace Magazynier.AplicationServices.API.Mappings
                 .ForMember(x => x.UserName, y => y.MapFrom(z => z.UserName))
                 .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))
                 .ForMember(x => x.LastName, y => y.MapFrom(z => z.LastName))
+                .ForMember(x => x.Role, y => y.MapFrom(z => z.Role))
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
 
             this.CreateMap<AddUserRequest, User>()
                 .ForMember(x => x.UserName, y => y.MapFrom(z => z.UserName))
                 .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))
                 .ForMember(x => x.LastName, y => y.MapFrom(z => z.LastName))
+                .ForMember(x => x.Password, y => y.MapFrom(z => z.Password))
+                .ForMember(x => x.Role, y => y.MapFrom(z => z.A))
                 .ForMember(x => x.Password, y => y.MapFrom(z => z.Password));
               
 

@@ -8,10 +8,11 @@ using Magazynier.AplicationServices.API.Domain;
 using Magazynier.AplicationServices.API.Domain.Get;
 using Magazynier.AplicationServices.API.Domain.Add;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Magazynier.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PlacesController :ApiControllerBase

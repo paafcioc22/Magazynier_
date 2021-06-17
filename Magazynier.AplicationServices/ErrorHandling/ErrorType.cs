@@ -17,5 +17,6 @@ namespace Magazynier.AplicationServices.ErrorHandling
         public const string UnsupportedMethod = "UNSUPPORTED_METHOD";
         public const string RequestTooLarge = "REQUEST_TOO_LARGE";
         public const string TooManyRequest = "TOO_MANY_REQUEST";
+        public const string UserExists = "UserExists";
     }
 }

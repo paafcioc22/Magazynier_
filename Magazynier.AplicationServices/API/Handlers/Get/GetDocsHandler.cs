@@ -24,15 +24,15 @@ namespace Magazynier.AplicationServices.API.Handlers
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
         readonly IWebSzacho webSzacho;
-        readonly IGus gus;
+      
 
 
         public GetDocsHandler(  IMapper mapper, 
             IQueryExecutor queryExecutor, 
-            IWebSzacho webSzacho,
-            IGus gus)
+            IWebSzacho webSzacho
+            )
         {
-            this.gus = gus;
+           
             this.webSzacho = webSzacho;
             this.mapper = mapper;
             this.queryExecutor = queryExecutor;
@@ -47,15 +47,21 @@ namespace Magazynier.AplicationServices.API.Handlers
                             group by twr_kod , placeName,PlaceTwrNumer
                             order by 2'";
 
-         //   var daneZgus = await gus.szukajPodmioty<RootDaneSzukajPodmioty>("6121762083");
+            //   var daneZgus = await gus.szukajPodmioty<RootDaneSzukajPodmioty>("6121762083");
 
-           // var dsa= await webSzacho.GetList<Place>(sqlPobierzMMki);
+            // var dsa= await webSzacho.GetList<Place>(sqlPobierzMMki);
 
             //var respone = await lineSrvSoap.ExecuteSQLCommandAsync(req);
 
 
-            
 
+            if (!request.AuthenticationRole.Contains("Pawel"))
+            {
+                return new GetDocsResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.Unauthorize)
+                };
+            }
 
             var query = new GetDocumentsQuery()
             {

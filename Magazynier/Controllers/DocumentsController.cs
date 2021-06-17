@@ -11,32 +11,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Magazynier.AplicationServices.API.Domain.Delete;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 //using Document = Magazynier.DataAccess.Entities.Document;
 
 namespace Magazynier.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class DocumentsController : ControllerBase 
+    public class DocumentsController : ApiControllerBase
     { 
 
          
         private readonly IMediator mediator;
 
-        public DocumentsController(IMediator mediator)
+        public DocumentsController(IMediator mediator, ILogger<DocumentsController> logger) : base(mediator)
         {
-            this.mediator = mediator;
+
+            logger.LogInformation("We are in DOcs");
         }
 
-       
 
         [HttpGet]
-       // [Route("{docId}")]
-        public async Task<IActionResult> GetAllDocs([FromQuery] GetDocsRequest docsRequest)
+        // [Route("{docId}")]
+        public Task<IActionResult> GetAllDocs([FromQuery] GetDocsRequest docsRequest)
         {
-            var response = await this.mediator.Send(docsRequest);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(docsRequest);
+            //return this.Ok(response);
+
+
+            //User user = new User()
+            //{
+            //    UserName = this.User.FindFirstValue(ClaimTypes.Name),
+                
+            //};
+            //docsRequest.User = user;
+
+            return this.HandleRequest<GetDocsRequest, GetDocsResponse>(docsRequest);
         }
 
 

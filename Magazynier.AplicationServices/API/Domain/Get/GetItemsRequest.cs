@@ -9,6 +9,6 @@ namespace Magazynier.AplicationServices.API.Domain.Models
 {
     public class GetItemsRequest:IRequest<GetItemsResponse>
     {
-
+        
     }
 }

@@ -4,7 +4,6 @@ C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debu
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\ref\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\bin\Debug\net5.0\Magazynier.DataAccess.pdb
-C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.csprojAssemblyReference.cache
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.AssemblyInfoInputs.cache
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debu
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\ref\Magazynier.DataAccess.dll
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.pdb
 C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.genruntimeconfig.cache
+C:\Users\pawel\source\repos\Magazynier\Magazynier\Magazynier.DataAccess\obj\Debug\net5.0\Magazynier.DataAccess.csprojAssemblyReference.cache

@@ -2,13 +2,14 @@
 using Magazynier.AplicationServices.API.Domain.Get;
 using Magazynier.AplicationServices.API.Domain.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace Magazynier.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ItemsController : ApiControllerBase
@@ -23,10 +24,12 @@ namespace Magazynier.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllItems([FromQuery] GetItemsRequest itemRequest)
+        public   Task<IActionResult> GetAllItems([FromQuery] GetItemsRequest itemRequest)
         {
-            var response = await this.mediator.Send(itemRequest);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(itemRequest);
+            //return this.Ok(response);
+
+            return this.HandleRequest<GetItemsRequest, GetItemsResponse>(itemRequest);
         }
 
 

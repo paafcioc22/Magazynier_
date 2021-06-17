@@ -14,15 +14,19 @@ namespace Magazynier.DataAccess.CQRS.Queries
         public async override Task<List<Document>> Execute(WarehouseProcessesContext context)
         {
             if (string.IsNullOrEmpty(NrDokumentu))
+            {
                 return await context.Documents
-                    .Include(s => s.Items)
-                   
-                    .ToListAsync();
+                   .Include(s => s.Items)
+                   .ToListAsync();
+            } 
             else
+            {
                 return await context.Documents
                     .Where(s => s.Trn_NrDokumentu.Contains(this.NrDokumentu))
                     .Include(s => s.Items)
                     .ToListAsync();
+            }
+                
 
         }
     }

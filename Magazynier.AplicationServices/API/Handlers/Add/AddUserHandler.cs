@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Magazynier.AplicationServices.API.Domain.Add;
 using Magazynier.AplicationServices.ErrorHandling;
+using Magazynier.DataAccess;
 using Magazynier.DataAccess.CQRS;
 using Magazynier.DataAccess.CQRS.Commands;
+using Magazynier.DataAccess.CQRS.Queries;
 using Magazynier.DataAccess.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
@@ -21,12 +23,14 @@ namespace Magazynier.AplicationServices.API.Handlers.Add
     {
         private readonly IMapper mapper;
         private readonly ICommandExecutor commandExecutor;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IPasswordHasher<User> passwordHasher;
 
-        public AddUserHandler(IMapper mapper, ICommandExecutor commandExecutor, IPasswordHasher<User> passwordHasher)
+        public AddUserHandler(IMapper mapper, ICommandExecutor commandExecutor, IQueryExecutor queryExecutor, IPasswordHasher<User> passwordHasher)
         {
             this.mapper = mapper;
             this.commandExecutor = commandExecutor;
+            this.queryExecutor = queryExecutor;
             this.passwordHasher = passwordHasher;
         }
         public async Task<AddUserResponse> Handle(AddUserRequest request, CancellationToken cancellationToken)
@@ -38,6 +42,23 @@ namespace Magazynier.AplicationServices.API.Handlers.Add
                 return new AddUserResponse()
                 {
                     Error = new Domain.ErrorModel(ErrorType.UnsupportedMethod)
+                };
+            }
+
+
+            var query = new GetUsersQuery()
+            {
+                
+            };
+
+            var users = await this.queryExecutor.Execute(query);
+
+            var isExists = users.Where(s => s.UserName == user.UserName).Any();
+            if (isExists)
+            {
+                return new AddUserResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.UserExists)
                 };
             }
 
@@ -57,6 +78,8 @@ namespace Magazynier.AplicationServices.API.Handlers.Add
                     Error = new Domain.ErrorModel(ErrorType.NotFound)
                 };
             }
+
+             
 
             return new AddUserResponse()
             {
